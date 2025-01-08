@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './index.css';
 import Board from './Board';
 import { checkWinner, isForbiddenMove  } from './utils'; // checkWinner関数をインポート
