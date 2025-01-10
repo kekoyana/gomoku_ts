@@ -15,30 +15,49 @@ body {
 #game-board {
     display: grid;
     grid-template-columns: repeat(15, 30px); /* 15x15のマス */
-    grid-gap: 1px; /* マス間の隙間 */
-    border: 1px solid black;
     background-color: #d1b000;
     padding: 10px;
+    position: relative;
 }
+
+/* 盤面の線を描画 */
+#game-board::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, black 1px, transparent 1px),
+                linear-gradient(to bottom, black 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: 15px 15px;
+    background-origin: content-box;
+}
+
 .cell {
     width: 30px;
     height: 30px;
-    background-color: #f5deb3;/* マスの色 */
-    border: 1px solid #c09400;
-    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
 }
-.stone-black {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background-color: black;
-    margin: 2px;
-}
+
+.stone-black,
 .stone-white {
     width: 26px;
     height: 26px;
     border-radius: 50%;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+}
+
+.stone-black {
+    background-color: black;
+}
+
+.stone-white {
     background-color: white;
-    margin: 2px;
     border: 1px solid black;
 }

@@ -14,7 +14,7 @@ function App() {
         }
 
         if (currentPlayer === 'black' && isForbiddenMove(board, index, currentPlayer, 15)) {
-            alert('禁じ手です！');
+            setWinner('白');
             return;
         }
 
@@ -33,9 +33,14 @@ function App() {
 
     return (
         <div className="game">
-            <h1>五目並べ</h1>
+            <div className="status">
+                {winner ? (
+                    <h2>{winner}の勝ち！</h2>
+                ) : (
+                    <h2>次の手番: {currentPlayer === 'black' ? '黒' : '白'}</h2>
+                )}
+            </div>
             <Board board={board} onClick={handleClick} />
-            {winner && <h2>{winner}の勝ち！</h2>} {/* 勝者を表示 */}
         </div>
     );
 }

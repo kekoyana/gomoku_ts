@@ -101,11 +101,10 @@ export const isForbiddenMove = (board: (string | null)[], index: number, color: 
         return counts.filter(count => count === target).length;
     };
 
-    const threeCount = countOccurrences(rowCounts, 3) + countOccurrences(colCounts, 3) + countOccurrences(diag1Counts, 3) + countOccurrences(diag2Counts, 3);
-    const fourCount = countOccurrences(rowCounts, 4) + countOccurrences(colCounts, 4) + countOccurrences(diag1Counts, 4) + countOccurrences(diag2Counts, 4);
-    const fiveCount = checkWinner(tempBoard,size) === color
+    const sixCount = countOccurrences(rowCounts, 6) + countOccurrences(colCounts, 6) + countOccurrences(diag1Counts, 6) + countOccurrences(diag2Counts, 6);
+    const sevenCount = countOccurrences(rowCounts, 7) + countOccurrences(colCounts, 7) + countOccurrences(diag1Counts, 7) + countOccurrences(diag2Counts, 7);
 
-    if (threeCount >= 2 || fourCount >= 2 || fiveCount) {
+    if (sixCount > 0 || sevenCount > 0) {
         return true;
     }
 
